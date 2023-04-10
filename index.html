@@ -9,13 +9,23 @@
     <title>큐빙클럽</title>
     <style>
         body{
+            -webkit-touch-callout: none;
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
             color:white
+        }
+        
+        img{
+            -webkit-user-drag: none;
         }
         .upper{
             text-align: center;
             
         }
         .logo{
+            width: 625px;
             max-width: 100%;
         }
         .title{
@@ -32,6 +42,7 @@
             font-size: 30px;
             color: gray;
         }
+        
     </style>
 </head>
 <body bgcolor="black">
@@ -43,5 +54,39 @@
     </div>
     
 
+    <script>
+        let rotate = 0
+        let count = 0;
+        const logo = document.querySelector(".logo");
+        const title = document.querySelector(".title");
+        const comingsoon = document.querySelector(".comingsoon");
+
+        logo.addEventListener("click",clickFnc)
+        logo.addEventListener("touch",clickFnc)
+
+        function clickFnc(){
+            count += 1;
+            console.log(count)
+            if(count>14){
+                logo.removeEventListener("click",clickFnc);
+                logo.removeEventListener("touch",clickFnc);
+                logo.src = "./event.png"
+                logo.style.marginTop="10px"
+                logo.style.marginBottom="100px"
+                logo.style.width="442px"
+                logo.style.maxWidth="70%"
+                title.innerHTML="Heros of the Cubing Club"
+                comingsoon.innerHTML="♨♨큐.빙.클.럽♨☜환영☜♨☜국산개발☜☆100%☆◐열심히◐♜개발중♜§☜아님말고§♨"
+                setInterval(() => {
+                    logo.style.transform = `rotate(${rotate}deg)`
+                    rotate += 30
+                }, 50);
+                
+            }
+        }
+
+        event
+    </script>
 </body>
+
 </html>
